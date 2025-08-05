@@ -20,6 +20,7 @@ public class SelectData {
         }
 
         try{
+
             // Establish the connection
             con=DriverManager.getConnection(url,username,password);
             statement=con.createStatement();
