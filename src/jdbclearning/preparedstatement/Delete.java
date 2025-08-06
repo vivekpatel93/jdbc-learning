@@ -1,45 +1,45 @@
 package jdbclearning.preparedstatement;
+import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.DriverManager;
-public class Insert {
+public class Delete {
     private static final String URL="jdbc:mysql://localhost:3306/use_your_dbname";
     private static final String USERNAME="username";
     private static final String PASSWORD="password";
     public static void main(String[] args){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        }catch(ClassNotFoundException c){
+            System.out.println(c.getMessage());
+        }
         Connection connection=null;
         PreparedStatement preparedstatement=null;
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        }catch (ClassNotFoundException c){
-            System.out.println(c.getMessage());
-        }
-        try{
             connection=DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            String query="INSERT INTO students(name,age,marks) VALUES(?,?,?)";
+            String query="DELETE FROM students WHERE id=?";
             preparedstatement=connection.prepareStatement(query);
-            preparedstatement.setString(1,"Ajay");
-            preparedstatement.setInt(2,25);
-            preparedstatement.setDouble(3,78.5d);
+            preparedstatement.setInt(1,4);
             int row_change=preparedstatement.executeUpdate();
             if(row_change>0){
-                System.out.println("Row inserted successfully.");
+                System.out.println("Row deleted successfully.");
             }else{
-                System.out.println("Row did not insert.");
+                System.out.println("Row not deleted something went wrong.");
             }
         }catch(SQLException s){
             s.printStackTrace();
         }
-        try{
-            if(connection!=null){
-                connection.close();
+        finally{
+            try{
+                if(preparedstatement != null){
+                    preparedstatement.close();
+                }
+                if(connection!=null){
+                    connection.close();
+                }
+            }catch(SQLException conExp){
+                System.out.println(conExp.getMessage());
             }
-            if(preparedstatement != null){
-                preparedstatement.close();
-            }
-        }catch(SQLException closeExp){
-            System.out.println(closeExp.getMessage());
         }
     }
 }

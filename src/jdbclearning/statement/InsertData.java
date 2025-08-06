@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InsertData {
-    private static final String url="jdbc:mysql://localhost:3306/mydb";
-    private static final String username="root";
-    private static final String password="root";
+    private static final String url="jdbc:mysql://localhost:3306/use_your_dbname";
+    private static final String username="username";
+    private static final String password="password";
 
     public static void main(String[] args) {
         try{

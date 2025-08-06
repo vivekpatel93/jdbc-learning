@@ -4,9 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class Update {
-    private static final String URL="jdbc:mysql://localhost:3306/mydb";
-    private static final String USERNAME="root";
-    private static final String PASSWORD="root";
+    private static final String URL="jdbc:mysql://localhost:3306/use_your_dbname";
+    private static final String USERNAME="username";
+    private static final String PASSWORD="password";
 
     public static void main(String[] args) {
         Connection connection=null; // because this is a local variable that why necessary to initialize
