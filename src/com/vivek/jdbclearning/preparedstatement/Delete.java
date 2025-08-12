@@ -1,4 +1,4 @@
-package jdbclearning.preparedstatement;
+package com.vivek.jdbclearning.preparedstatement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

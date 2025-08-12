@@ -1,4 +1,4 @@
-package jdbclearning.statement;
+package com.vivek.jdbclearning.statement;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.SQLException;
